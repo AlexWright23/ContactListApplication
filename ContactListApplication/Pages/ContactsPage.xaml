@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ContactListApplication.Pages.ContactsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Contacts"
+    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}">
+
+    <Grid RowDefinitions="Auto,*" Padding="12">
+        <Label
+            Text="Contact List"
+            FontSize="24"
+            FontAttributes="Bold"
+            Margin="0,0,0,10" />
+
+        <CollectionView
+            Grid.Row="1"
+            ItemsSource="{Binding ContactGroups}"
+            IsGrouped="True"
+            SelectionMode="Single"
+            SelectionChanged="OnSelectionChanged">
+
+            <CollectionView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <Grid Padding="8,6" BackgroundColor="{AppThemeBinding Light=#F2F2F2, Dark=#2A2A2A}">
+                        <Label
+                            Text="{Binding Key}"
+                            FontSize="16"
+                            FontAttributes="Bold" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.GroupHeaderTemplate>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10" ColumnDefinitions="60,*" ColumnSpacing="12">
+                        <Frame
+                            WidthRequest="48"
+                            HeightRequest="48"
+                            CornerRadius="24"
+                            IsClippedToBounds="True"
+                            Padding="0"
+                            HasShadow="False"
+                            BorderColor="{AppThemeBinding Light=#DDDDDD, Dark=#444444}">
+                            <Image
+                                Source="{Binding Photo}"
+                                Aspect="AspectFill" />
+                        </Frame>
+
+                        <Label
+                            Grid.Column="1"
+                            Text="{Binding Name}"
+                            VerticalOptions="Center"
+                            FontSize="16" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

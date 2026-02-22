@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ContactListApplication.Pages.ContactDetailsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Contact Details"
+    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="14">
+
+            <Frame
+                WidthRequest="160"
+                HeightRequest="160"
+                CornerRadius="80"
+                IsClippedToBounds="True"
+                Padding="0"
+                HasShadow="False"
+                HorizontalOptions="Center"
+                BorderColor="{AppThemeBinding Light=#DDDDDD, Dark=#444444}">
+                <Image Source="{Binding Photo}" Aspect="AspectFill" />
+            </Frame>
+
+            <Label
+                Text="{Binding Name}"
+                FontSize="24"
+                FontAttributes="Bold"
+                HorizontalOptions="Center" />
+
+            <Frame Padding="12" HasShadow="False" BorderColor="{AppThemeBinding Light=#E6E6E6, Dark=#3A3A3A}">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Email" FontAttributes="Bold" />
+                    <Label Text="{Binding Email}" />
+
+                    <Label Text="Phone" FontAttributes="Bold" Margin="0,6,0,0"/>
+                    <Label Text="{Binding Phone}" />
+
+                    <Label Text="Description" FontAttributes="Bold" Margin="0,6,0,0"/>
+                    <Label Text="{Binding Description}" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Button Text="Back" Clicked="OnBackClicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
